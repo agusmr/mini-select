@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>htm Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.14/slimselect.css" />
+  <link rel="stylesheet" href="./demo/style.css">
+</head>
+<script src="https://unpkg.com/preact@8.2.7/dist/preact.min.js"></script>
+<script src="./../dist/mini-select.umd.js"></script>
+<script type="module" >
+  import { html, Component, render, h } from 'https://unpkg.com/htm/preact/standalone.mjs';
+    class App extends Component {
+      constructor(){
+        super();
+        this.state.todos = [{id:1, title:`Item 0`}];
+      }
+      addTodo() {
+        const todos = this.state.todos || [];
+        this.setState({ todos: todos.concat({id:todos.length, title:`Item ${todos.length}`}) });
+      }
+      render({ }, { todos = [] }) {
+        return html`
+          <div class="app">
+            <${Header} name="Demo Mini Select" />
+            <${MiniSelect} 
+              list=${this.state.todos}  
+              value=${this.state.todos.length} 
+              forceSelect=${true} 
+              class="mini-select" 
+              title="Select list items" 
+            />
+            <button onClick=${this.addTodo.bind(this)}>Add Item Select</button>
+            <${Footer}><//>
+          </div>
+        `;
+      }
+    }
+
+    const Header = ({ name }) => html`<header><h1>${name}</h1></header>`
+    const Footer = props => html`<footer ...${props} />`
+
+    render(html`<${App} />`, document.body);
+  </script>
+
+</html>
