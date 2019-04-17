@@ -4,7 +4,7 @@ Mini-select is a simple Slim advanced select dropdown library for Preact, based 
   - Easy to modification
   
 #### Usage
-```
+```jsx
     <PreactSelect 
         list={this.state.list}  
         value={1} 
@@ -14,7 +14,7 @@ Mini-select is a simple Slim advanced select dropdown library for Preact, based 
     />
 ```
 #### Demo using htm and preact
-```
+```html
 <script src="https://unpkg.com/preact@8.2.7/dist/preact.min.js"></script>
 <script src="./../dist/mini-select.umd.js"></script>
 <script type="module" >
